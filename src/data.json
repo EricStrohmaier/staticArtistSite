@@ -1,0 +1,14 @@
+{
+    "content":{
+
+    },
+    "socials":{
+        "instagram":[
+            {
+            "link":"https://www.instagram.com/",
+            "title":"Instagram",
+            "icon": "../src/assets/icons/instagram.png"
+        }
+        ]
+    }
+}
