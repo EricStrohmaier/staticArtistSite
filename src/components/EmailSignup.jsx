@@ -6,10 +6,10 @@ function EmailSignup (){
   return (
    
     <div className='mt-4 m-2 flex w-full  items-center justify-center'>
-       <div className='rounded-md relative w-full lg:w-4/5 h-fit flex   justify-center items-center'>
+       <div className='rounded-md relative w-full lg:w-4/5 h-fit flex justify-center items-center'>
           <input 
             onChange={(e) => {setEmail(e.target.value)}}
-            className='w-full lg:w-[300px] h-[50px] rounded-md indent-2 md:indent-4 ' 
+            className='w-full  h-[50px] rounded-md indent-2 md:indent-4 ' 
             type='email' 
             placeholder='your@email.com' />
                       
