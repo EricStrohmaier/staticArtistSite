@@ -5,7 +5,7 @@ import albumCover from "../assets/img/albumcover.jpg"
 
 function AlbumPicture() {
   return (
-    <div className="group  relative flex justify-center items-center m-0 overflow-hidden border-2 border-opacity-75 border-zinc-400  ">
+    <div className="group transition duration-500 relative flex justify-center items-center m-0 overflow-hidden border-2 border-opacity-75 border-zinc-400  ">
     <img
       className="  "                
       width={450}
@@ -15,9 +15,9 @@ function AlbumPicture() {
     />
 
     {/* hover effect on the IMG */}
-  <div className="transition duration-100 absolute bottom-0 left-0 w-full h-1/5 bg-pink-300 opacity-0 group-hover:opacity-90 "></div>
-  <div className="  absolute lg:bottom-8 md:bottom-6 bottom-5 hidden  group-hover:flex font-semibold text-xl md:text-2xl lg:text-4xl text-white  pointer-events-none  drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-  <p>NEW SINGLE<span className="font-bold text-xl md:text-2xl  lg:text-4xl text-pink-600 ">{" "} OUT NOW</span>{" "} !</p></div>
+  <div className="absolute bottom-0 left-0 w-full h-1/6 bg-pink-300 opacity-0 group-hover:opacity-90 "></div>
+  <div className="absolute lg:bottom-6 bottom-4 font-normal hidden  group-hover:flex  text-md md:text-2xl  text-white  pointer-events-none  drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+  <p>NEW SINGLE<span className="text-md md:text-2xl text-pink-600 ">{" "}OUT NOW</span></p></div>
   </div>
   )
 }
