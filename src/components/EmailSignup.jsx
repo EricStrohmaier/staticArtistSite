@@ -1,79 +1,69 @@
 import axios from "axios";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+const SignupSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+});
 
 function EmailSignup() {
-  const [email, setEmail] = useState("");
 
-  const [isSignupSuccessful, setIsSignupSuccessful] = useState(false);
-  const { register, trigger, formState: { errors } } = useForm();
-
-  const handleSignup = async (e) => {
-    e.preventDefault();
-
-    const isValid = await trigger();
-    if (!isValid) {
-      return;
-    }
-
-    try {
-      const payload = {
-        email_address: email,
-      };
+    const submitForm = async (values, formik) => {
+      console.log(values);
+      const { email } = values;
+      try {
+        const payload = {
+          email_address: email,
+        };
 
       await axios.post('/.netlify/functions/add-email-subscriber', payload);
       alert('Contact details added successfully.');
-      setIsSignupSuccessful(true);
-      setEmail( "");
+      formik.resetForm();
     } catch (error) {
-      console.log(error);
-      // Handle error case
+      alert(error.message);
     }
   };
 
-  const handleChange = (e) => {
-
-    setEmail( e.target.value);
-    console.log(email);
-
-  };
 
   return (
     <div className="mt-4 flex flex-col items-center">
-      <div className="w-full lg:mx-10  lg:w-fit h-fit">
-        <form className="rounded-md relative flex justify-center items-center">
-          <input
-            onChange={handleChange}
-            className="w-full h-10 rounded-md pl-2 md:pl-4"
-            type="email"
-            placeholder="your@email.com"
-            required
-            {...register("email", {
-              required: true,
-              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            })}
-          />
-
+  
+      <Formik
+      className='w-full lg:mx-10 lg:w-fit h-fit'
+        initialValues={{email: "" }}
+        validationSchema={SignupSchema}
+        onSubmit={submitForm}
+      >
+         {(formik) => (
+        <Form className="rounded-md relative flex justify-center items-center w-full ">
+          <div className="my-2 flex flex-col">
+            <label htmlFor="email" className="block mb-1">
+              Email <span className="text-red-500">*</span>
+            </label>
+            <Field
+                id="email"
+                className="w-full h-10 rounded-md pl-2 md:pl-4"
+                name="email"
+                placeholder="your@email.com"
+              ></Field>
+            <ErrorMessage
+              component="div"
+              name="email"
+              className="text-red-700"
+            />
+          </div>
           <button
-            onClick={handleSignup}
+            disabled={!formik.isValid || !formik.dirty}
+            type="submit"
             className="transition duration-100 ml-3 lg:mt-0 lg:ml-3 p-2 bg-pink-400 hover:scale-105 rounded-md text-lg md:text-xl font-thin text-white"
           >
-            Subscribe
+  Submit
           </button>
-        </form>
-      </div>
-      {errors.email && (
-        <p className="font-normal tracking-widest text-xl text-red-500 mt-2">
-          {errors.email.type === "required" && "This field is required."}
-          {errors.email.type === "pattern" && "Invalid email address."}
-        </p>
-      )}
-      {isSignupSuccessful && (
-        <div className="font-normal tracking-widest text-xl text-green-500 mt-2">
-          Email Sign-up successful!
-        </div>
-      )}
-    </div>
+        </Form>
+        )}
+      </Formik>
+
+  </div>
   );
 }
 
