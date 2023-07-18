@@ -17,10 +17,12 @@ function EmailSignup() {
     }
 
     try {
-      await axios.post('/api/addMember', {
-        email: email
-      });
+      const payload = {
+        email_address: email,
+      };
 
+      await axios.post('/.netlify/functions/add-email-subscriber', payload);
+      alert('Contact details added successfully.');
       setIsSignupSuccessful(true);
       setEmail( "");
     } catch (error) {
@@ -30,7 +32,10 @@ function EmailSignup() {
   };
 
   const handleChange = (e) => {
+
     setEmail( e.target.value);
+    console.log(email);
+
   };
 
   return (
