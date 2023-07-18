@@ -12,7 +12,7 @@ function App() {
   const isDesktop = useMediaQuery("(min-width: 1022px)");
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between font-sans font-thin">
+    <div className="flex min-h-screen flex-col items-center justify-between font-sans font-normal">
     <header className="relative w-full h-fit">
          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
     <BackgroundImg/>
