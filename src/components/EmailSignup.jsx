@@ -20,25 +20,25 @@ function EmailSignup() {
     setIsEmailExists(false);
 
     // Check if email already exists in the database
-    const { data, error } = await supabase
-      .from("email")
-      .select()
-      .eq("email", email);
+    // const { data, error } = await supabase
+    //   .from("email")
+    //   .select()
+    //   .eq("email", email);
 
-    if (error) {
-      console.error(error);
-      return;
-    }
+    // if (error) {
+    //   console.error(error);
+    //   return;
+    // }
 
-    if (data.length > 0) {
-      // Email already exists
-      setIsEmailExists(true);
-      return;
-    }
+    // if (data.length > 0) {
+    //   // Email already exists
+    //   setIsEmailExists(true);
+    //   return;
+    // }
 
     // Insert the email into the database
-    await supabase.from("email").insert([{ email: email }]).select();
-    setIsSignupSuccessful(true);
+  //   await supabase.from("email").insert([{ email: email }]).select();
+  //   setIsSignupSuccessful(true);
   };
 
   const handleInputChange = () => {
