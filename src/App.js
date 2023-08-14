@@ -24,9 +24,12 @@ function App() {
         <div className="relative z-20 w-4/5 h-4/5 flex flex-col items-center justify-center">       
       <div className="mt-10 flex items-top justify-center w-full  ">
         <AlbumPicture/>
-          <div className='flex flex-col'> 
+          <div className='flex flex-col '> 
             <Button/>
-            <EmailSignup/>                  
+            <EmailSignup/>
+            <div className="mt-5 lg:mx-10 rounded-md">
+              <iframe title="artist" src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                  
+            </div>
         </div>
     </div>
     </div>
@@ -34,15 +37,20 @@ function App() {
       <div className="mt-8  flex flex-col z-40 ">
         <AlbumPicture/>
         <Button/>
-        <EmailSignup/>                  
+        <EmailSignup/> 
+          <div className="mt-5 rounded-md">
+              <iframe title="artist" src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0" width="100%" height="152"  allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                  
+            </div>                 
       </div>
     )}
-    
-      </div>
+  
+         </div>
+         <div className="z-50 relative flex justify-center items-center my-10 mx-4 ">
+         <iframe width="660" height="360" src="https://www.youtube.com/embed/oz2D9lD0Cc8?start=667" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
     </header>
-
-<MainCard/>
-<FooterCard/>
+    
+      <MainCard/>
+        <FooterCard/>
   </div>
   );
 }

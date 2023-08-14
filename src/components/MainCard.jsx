@@ -8,7 +8,8 @@ export default function MainCard() {
   const isDesktop = useMediaQuery("(min-width: 900px)");
 
   return (
-    <main className="h-fit w-full  flex justify-center items-center ">
+    <main className="h-fit w-full  flex flex-col justify-center items-center ">
+      
       <div className="relative z-0 flex flex-col md:flex-row">
       {/* <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 z-10"></div> */}
 
