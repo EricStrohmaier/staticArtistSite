@@ -1,5 +1,5 @@
 
-import albumCover from "../assets/img/albumcover.jpg"
+import albumCover from "../assets/img/nomadicechoes.jpg"
 
 
 
