@@ -27,7 +27,7 @@ export default function MainCard() {
           )}
           
         </div>
-        <div className="z-20 absolute flex flex-col justify-between  items-center h-full w-full">
+        <div className="z-20 absolute flex flex-col justify-end  items-center h-full w-full">
           <div className='flex flex-col justify-between items-center text-white'>
             <div className=' mt-40 m-2 text-2xl lg:text-6xl font-bold'>CONTACT</div>
             <div className='text-xl mb-4'>
@@ -35,7 +35,7 @@ export default function MainCard() {
             </div>
 
           </div>
-          <iframe title="artist" className='flex lg:w-1/2 w-2/3 mt-5 mb-20'  src="https://open.spotify.com/embed/playlist/0GzOlrqvc7XcBwc5xV3d7t?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <iframe title="artist" className='flex lg:w-1/2 w-2/3 mt-5 '  src="https://open.spotify.com/embed/playlist/0GzOlrqvc7XcBwc5xV3d7t?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
         </div>
 
