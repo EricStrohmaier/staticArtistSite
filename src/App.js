@@ -27,7 +27,7 @@ function App() {
           <div className='flex flex-col '> 
             <Button/>
             <EmailSignup/>
-            <div className="mt-5 lg:mx-10 rounded-md">
+            <div className="my-5 lg:mx-10 rounded-md">
               <iframe title="artist" src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                  
             </div>
         </div>
@@ -38,7 +38,7 @@ function App() {
         <AlbumPicture/>
         <Button/>
         <EmailSignup/> 
-          <div className="mt-5 rounded-md">
+          <div className="my-5 rounded-md">
               <iframe title="artist" src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0" width="100%" height="152"  allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                  
             </div>                 
       </div>
