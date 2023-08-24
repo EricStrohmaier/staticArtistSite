@@ -45,8 +45,12 @@ function App() {
     )}
   
          </div>
-         <div className="z-50 relative flex justify-center items-center my-10 mx-4 ">
-         <iframe width="660" height="360" src="https://www.youtube.com/embed/oz2D9lD0Cc8?start=667" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
+        <div className="z-50 relative flex flex-col lg:flex-row justify-center items-center my-10 mx-4 ">
+          <div className="flex justify-center lg:justify-between mx-9 my-4 ">
+            <iframe className="lg:w-[460px] w-[360px]"  height="315" src="https://www.youtube.com/embed/oz2D9lD0Cc8?start=667" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
+            <iframe className="lg:w-[460px] w-[360px]" height="315" src="https://www.youtube.com/embed/1Jlw4NCNKG4?si=FDUqZRMdXVcCittA&amp;start=200" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      
     </header>
     
       <MainCard/>
