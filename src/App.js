@@ -7,55 +7,84 @@ import Headline from "./components/Headline";
 import MainCard from "./components/MainCard";
 import useMediaQuery from "./hooks/useMediaQuery";
 
-
 function App() {
   const isDesktop = useMediaQuery("(min-width: 1022px)");
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between font-sans font-normal">
-    <header className="relative w-full h-fit">
-         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
-    <BackgroundImg/>
-      <div className='w-full h-screen mb-5 p-8 flex flex-col items-center justify-center'>
-      <Headline/>
-       
-    
-    {isDesktop ? (
-        <div className="relative z-20 w-4/5 h-4/5 flex flex-col items-center justify-center">       
-      <div className="mt-10 flex items-top justify-center w-full  ">
-        <AlbumPicture/>
-          <div className='flex flex-col '> 
-            <Button/>
-            <EmailSignup/>
-            <div className="my-5 lg:mx-10 rounded-md">
-              <iframe title="artist" src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0" width="100%" height="152" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                  
+    <div className="flex flex-col items-center justify-between min-h-screen font-sans font-normal">
+      <header className="relative w-full h-fit">
+        <div className="absolute top-0 left-0 z-10 w-full h-full bg-black opacity-50"></div>
+        <BackgroundImg />
+        <div className="flex flex-col items-center justify-center w-full h-screen p-8 mb-5">
+          <Headline />
+
+          {isDesktop ? (
+            <div className="relative z-20 flex flex-col items-center justify-center w-4/5 h-4/5">
+              <div className="flex justify-center w-full mt-10 items-top ">
+                <AlbumPicture />
+                <div className="flex flex-col ">
+                  <Button />
+                  <EmailSignup />
+                  <div className="my-5 rounded-md lg:mx-10">
+                    <iframe
+                      title="artist"
+                      src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0"
+                      width="100%"
+                      height="152"
+                      allowfullscreen=""
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      loading="lazy"
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
             </div>
+          ) : (
+            <div className="z-40 flex flex-col mt-8 ">
+              <AlbumPicture />
+              <Button />
+              <EmailSignup />
+              <div className="my-5 rounded-md">
+                <iframe
+                  title="artist"
+                  src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0"
+                  width="100%"
+                  height="152"
+                  allowfullscreen=""
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+          )}
         </div>
-    </div>
-    </div>
-    ) : ( 
-      <div className="mt-8  flex flex-col z-40 ">
-        <AlbumPicture/>
-        <Button/>
-        <EmailSignup/> 
-          <div className="my-5 rounded-md">
-              <iframe title="artist" src="https://open.spotify.com/embed/artist/1Nb4vxRmJZpwJXuHs5ZQO3?utm_source=generator&theme=0" width="100%" height="152"  allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                  
-            </div>                 
-      </div>
-    )}
-  
-         </div>
-        <div className="z-50 relative flex flex-col lg:flex-row justify-center items-center my-10 mx-4 ">
-          <div className="flex justify-center lg:justify-between mx-9 my-4 ">
-            <iframe className="lg:w-[460px] w-[360px]"  height="315" src="https://www.youtube.com/embed/oz2D9lD0Cc8?start=667" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>      </div>
-            <iframe className="lg:w-[460px] w-[360px]" height="315" src="https://www.youtube.com/embed/1Jlw4NCNKG4?si=FDUqZRMdXVcCittA&amp;start=200" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div className="relative z-50 flex flex-col items-center justify-center mx-4 my-10 lg:flex-row ">
+          <div className="flex justify-center my-4 lg:justify-between mx-9 ">
+            <iframe
+              className="lg:w-[460px] w-[360px]"
+              height="315"
+              src="https://www.youtube.com/embed/oz2D9lD0Cc8?start=667"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>{" "}
+          </div>
+          <iframe
+            className="lg:w-[460px] w-[360px]"
+            height="315"
+            src="https://www.youtube.com/embed/1Jlw4NCNKG4?si=FDUqZRMdXVcCittA&amp;start=200"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
         </div>
-      
-    </header>
-    
-      <MainCard/>
-        <FooterCard/>
-  </div>
+      </header>
+
+      <MainCard />
+      <FooterCard />
+    </div>
   );
 }
 
