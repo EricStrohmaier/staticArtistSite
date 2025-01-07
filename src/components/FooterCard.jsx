@@ -76,7 +76,7 @@ export default function FooterCard() {
       </div>
       <div className="text-white">
         {" "}
-        &copy; {new Date().getFullYear()} by
+        &copy; {new Date().getFullYear()} by{" "}
         <a
           target="_blank"
           className="underline"
