@@ -76,10 +76,14 @@ export default function FooterCard() {
       </div>
       <div className="text-white">
         {" "}
-        &copy; {new Date().getFullYear()} by a{" "}
-        <a className="underline" href="https://github.com/EricStrohmaier">
-          human
-        </a>{" "}
+        &copy; {new Date().getFullYear()} by
+        <a
+          target="_blank"
+          className="underline"
+          href="https://github.com/EricStrohmaier"
+        >
+          Eric Strohmaier
+        </a>
       </div>
     </div>
   );
