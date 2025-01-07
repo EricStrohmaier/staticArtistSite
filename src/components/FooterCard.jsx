@@ -14,8 +14,8 @@ import tidalIcon from "../assets/icons/tidal.png";
 
 export default function FooterCard() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full p-2 bg-black">
-      <div className="flex flex-wrap items-center justify-center w-4/5 h-full p-2 py-5">
+    <div className="flex flex-col justify-center items-center p-2 w-full h-full bg-black">
+      <div className="flex flex-wrap justify-center items-center p-2 py-5 w-4/5 h-full">
         <SocialIcon
           title={"Spotify"}
           img={spotifyIcon}
@@ -76,7 +76,7 @@ export default function FooterCard() {
       </div>
       <div className="text-white">
         {" "}
-        &copy; 2024 by a{" "}
+        &copy; {new Date().getFullYear()} by a{" "}
         <a className="underline" href="https://github.com/EricStrohmaier">
           human
         </a>{" "}
