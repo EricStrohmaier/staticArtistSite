@@ -1,92 +1,100 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { supabase } from "../utils/useSupabase";
 
 function EmailSignup() {
   const [isSignupSuccessful, setIsSignupSuccessful] = useState(false);
   const [isEmailExists, setIsEmailExists] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
- 
   } = useForm();
 
   const handleSignup = async (value) => {
     const { email } = value;
-
-    // Reset the state and clear the error message
+    setIsLoading(true);
     setIsEmailExists(false);
 
-    // Check if email already exists in the database
-     const { data, error } = await supabase
-       .from("email")
-       .select()
-       .eq("email", email);
+    try {
+      const response = await fetch(
+        `https://api.beehiiv.com/v2/publications/${process.env.REACT_APP_BEEHIIV_PUBLICATION_ID}/subscriptions`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_BEEHIIV_API_KEY}`,
+          },
+          body: JSON.stringify({
+            email: email,
+            reactivate_existing: false,
+            send_welcome_email: true,
+          }),
+        }
+      );
 
-     if (error) {
-       console.error(error);
-       return;
-     }
+      const data = await response.json();
 
-     if (data.length > 0) {
-       // Email already exists
-       setIsEmailExists(true);
-       return;
-     }
-
-     //Insert the email into the database
-     await supabase.from("email").insert([{ email: email }]).select();
-     setIsSignupSuccessful(true);
+      if (response.status === 201) {
+        setIsSignupSuccessful(true);
+      } else if (response.status === 409) {
+        setIsEmailExists(true);
+      } else {
+        console.error("Error:", data);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = () => {
-    // Clear the error message when the input value changes
     if (isEmailExists) {
       setIsEmailExists(false);
     }
   };
 
   return (
-    <div className="mt-4 flex flex-col items-center">
-      <div className="w-full lg:mx-10  lg:w-fit h-fit">
+    <div className="flex flex-col items-center mt-4">
+      <div className="w-full lg:mx-10 lg:w-fit h-fit">
         <form onSubmit={handleSubmit(handleSignup)}>
-          <div className="rounded-md relative flex justify-center items-center">
+          <div className="flex relative justify-center items-center rounded-md">
             <input
               {...register("email", {
                 required: true,
                 pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
               })}
-              className="w-full h-10 rounded-md pl-2 md:pl-4"
+              className="pl-2 w-full h-10 rounded-md md:pl-4"
               type="email"
               placeholder="your@email.com"
-              onChange={handleInputChange} // Clear error message on input change
+              onChange={handleInputChange}
             />
 
             <button
               type="submit"
-              className="transition duration-100 ml-3 lg:mt-0 lg:ml-3 p-2 bg-pink-400 hover:scale-105 rounded-md text-lg md:text-xl font-thin text-white"
-              disabled={isSignupSuccessful}
+              className="p-2 ml-3 text-lg font-thin text-white bg-pink-400 rounded-md transition duration-100 lg:mt-0 lg:ml-3 hover:scale-105 md:text-xl"
+              disabled={isSignupSuccessful || isLoading}
             >
-              Subscribe
+              {isLoading ? "Subscribing..." : "Subscribe"}
             </button>
           </div>
         </form>
       </div>
       {errors.email && (
-        <p className={`font-normal tracking-widest text-xl text-red-500 mt-2`}>
+        <p className={`mt-2 text-xl font-normal tracking-widest text-red-500`}>
           {errors.email.type === "required" && "This field is required."}
           {errors.email.type === "pattern" && "Invalid email address."}
         </p>
       )}
       {isEmailExists && (
-        <div className="font-normal tracking-widest text-xl text-red-500 mt-2">
+        <div className="mt-2 text-xl font-normal tracking-widest text-red-500">
           Email already exists!
         </div>
       )}
       {isSignupSuccessful && (
-        <div className="font-normal tracking-widest text-xl text-green-500 mt-2">
+        <div className="mt-2 text-xl font-normal tracking-widest text-green-500">
           Email Sign-up successful!
         </div>
       )}
